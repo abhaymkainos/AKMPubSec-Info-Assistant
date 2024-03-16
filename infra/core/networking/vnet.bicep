@@ -1,7 +1,16 @@
+
+param name string
+param location string = resourceGroup().location
+
+
+
+
+
+
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 //  scope: resourceGroup() 
-  name: 'myVirtualNetwork'
-  location: 'Switzerland North'
+  name: name
+  location: location
   properties: {
     addressSpace: {
       addressPrefixes: [
