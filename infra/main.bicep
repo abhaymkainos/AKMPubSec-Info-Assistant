@@ -699,7 +699,8 @@ module vnet 'core/networking/vnet.bicep' =  {
 // name: 'vnet'
   scope: rg
 params : {
-// location: location}
+// location: location
+}
 }
 
 // DEPLOYMENT OF AZURE CUSTOMER ATTRIBUTION TAG
