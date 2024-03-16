@@ -710,7 +710,7 @@ resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (
 // deploy vvnet
 
 module vnet 'core/networking/vnet.bicep' =  {
-//  name: 'vnet'
+ name: 'vnet'
   scope: rg
 
 }
