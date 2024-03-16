@@ -709,7 +709,7 @@ module privateDNS 'core/networking/private-dns.bicep' =  {
   params: {
     name: 'PrivateDNSZone'
     location: location
-    vnetId: vnetId
+    vnetId: vnet.outputs.id
   }
 }
 
