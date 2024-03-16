@@ -698,7 +698,7 @@ module kvModule 'core/security/keyvault.bicep' = {
 module vnet 'core/networking/vnet.bicep' =  {
  name: 'vnet'
   scope: rg
-
+params : {}
 }
 
 // DEPLOYMENT OF AZURE CUSTOMER ATTRIBUTION TAG
