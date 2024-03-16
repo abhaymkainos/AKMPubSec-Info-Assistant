@@ -693,6 +693,14 @@ module kvModule 'core/security/keyvault.bicep' = {
   }
 }
 
+// deploy vvnet
+
+module vnet 'core/networking/vnet.bicep' =  {
+ name: 'vnet'
+  scope: rg
+
+}
+
 // DEPLOYMENT OF AZURE CUSTOMER ATTRIBUTION TAG
 resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (cuaEnabled) {
   name: 'pid-${cuaId}'
@@ -707,13 +715,7 @@ resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (
   }
 }
 
-// deploy vvnet
 
-module vnet 'core/networking/vnet.bicep' =  {
- name: 'vnet'
-  scope: rg
-
-}
 
 output AZURE_LOCATION string = location
 output AZURE_OPENAI_SERVICE string = azureOpenAIServiceName //cognitiveServices.outputs.name
