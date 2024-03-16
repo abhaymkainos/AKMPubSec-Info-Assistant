@@ -699,6 +699,7 @@ module vnet 'core/networking/vnet.bicep' =  {
  name: 'vnet'
   scope: rg
 params : {
+  name: 'vnet'
 // location: location
 }
 }
