@@ -709,32 +709,12 @@ resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (
 
 // deploy vvnet
 
-resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
-  scope: resourceGroup() 
-  name: 'myVirtualNetwork'
-  location: location 
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        '10.0.0.0/16'
-      ]
-    }
-    subnets: [
-      {
-        name: 'subnet1'
-        properties: {
-          addressPrefix: '10.0.0.0/24'
-        }
-      }
-      {
-        name: 'subnet2'
-        properties: {
-          addressPrefix: '10.0.1.0/24'
-        }
-      }
-    ]
-  }
+module vnet 'core/networking/vnet.bicep' =  {
+//  name: 'vnet'
+  scope: rg
+
 }
+
 output AZURE_LOCATION string = location
 output AZURE_OPENAI_SERVICE string = azureOpenAIServiceName //cognitiveServices.outputs.name
 output AZURE_SEARCH_INDEX string = searchIndexName
