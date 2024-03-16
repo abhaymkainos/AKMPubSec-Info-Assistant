@@ -1,7 +1,7 @@
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 //  scope: resourceGroup() 
   name: 'myVirtualNetwork'
-  location: location 
+  location: 'Switzerland North'
   properties: {
     addressSpace: {
       addressPrefixes: [
