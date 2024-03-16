@@ -771,4 +771,4 @@ output USE_AZURE_OPENAI_EMBEDDINGS bool = useAzureOpenAIEmbeddings
 output EMBEDDING_DEPLOYMENT_NAME string = useAzureOpenAIEmbeddings ? azureOpenAIEmbeddingDeploymentName : sentenceTransformersModelName
 output ENRICHMENT_APPSERVICE_NAME string = enrichmentApp.outputs.name 
 output DEPLOYMENT_KEYVAULT_NAME string = kvModule.outputs.keyVaultName
-output vnetId string = vnet.output.id
+output vnetId string = vnet.outputs.id
