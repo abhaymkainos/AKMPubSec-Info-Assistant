@@ -710,6 +710,7 @@ resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (
 // deploy vvnet
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
+  scope: rg
   name: 'myVirtualNetwork'
   location: location 
   properties: {
