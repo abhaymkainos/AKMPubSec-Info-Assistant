@@ -9,11 +9,12 @@ help: ## Show this help
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%s\033[0m|%s\n", $$1, $$2}' \
         | column -t -s '|'
 
-deploy: build infrastructure extract-env deploy-enrichments deploy-search-indexes deploy-webapp deploy-functions ## Deploy infrastructure and application code
+deploy: build infrastructure extract-env  ## Deploy infrastructure and application code
+##deploy: build infrastructure extract-env deploy-enrichments deploy-search-indexes deploy-webapp deploy-functions ## Deploy infrastructure and application code
  
-build-deploy-webapp: build extract-env deploy-webapp ##Build and Deploy the Webapp
-build-deploy-enrichments: build extract-env deploy-enrichments ##Build and Deploy the Enrichment Webapp
-build-deploy-functions: build extract-env deploy-functions ##Build and Deploy the Functions
+# build-deploy-webapp: build extract-env deploy-webapp ##Build and Deploy the Webapp
+# build-deploy-enrichments: build extract-env deploy-enrichments ##Build and Deploy the Enrichment Webapp
+# build-deploy-functions: build extract-env deploy-functions ##Build and Deploy the Functions
 
 build: ## Build application code
 	@./scripts/build.sh
@@ -56,5 +57,5 @@ take-dir-ownership:
 destroy-inf: check-subscription
 	@./scripts/inf-destroy.sh
 
-functional-tests: extract-env ## Run functional tests to check the processing pipeline is working
+# functional-tests: extract-env ## Run functional tests to check the processing pipeline is working
 	@./scripts/functional-tests.sh	
