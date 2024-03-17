@@ -693,6 +693,16 @@ module kvModule 'core/security/keyvault.bicep' = {
   }
 }
 
+module vnet 'core/networking/vnet.bicep' =  {
+ name: 'vnet'
+  scope: rg
+params : {
+  name: 'vnet'
+// location: location
+}
+}
+
+
 // DEPLOYMENT OF AZURE CUSTOMER ATTRIBUTION TAG
 resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (cuaEnabled) {
   name: 'pid-${cuaId}'
