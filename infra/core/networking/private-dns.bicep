@@ -1,6 +1,6 @@
 
 param name string
-param location string = resourceGroup().location
+param location string = 'global'
 param vnetId string 
 
 
