@@ -2,7 +2,7 @@
 param name string
 param location string = 'global'
 param vnetId string 
-
+param name2 string = 'mylinknetwork'
 
 resource privateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = {
   name: name
@@ -10,10 +10,10 @@ resource privateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = {
 }
 
 resource virtualNetworkLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = {
-  name: 'm/yname'
+  name: name2
   location: location
   properties: {
-    registrationEnabled: false // Set to true if you want auto-registration of VM records
+    registrationEnabled: false 
     virtualNetwork: {
       id: vnetId
     }

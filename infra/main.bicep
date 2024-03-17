@@ -702,6 +702,17 @@ params : {
 }
 }
 
+module privateDNS 'core/networking/private-dns.bicep' =  {
+  name: 'privateDNS'
+  scope: rg
+  params: {
+    name: 'PrivateDNSZone'
+    location: location
+    vnetId: vnetId
+  }
+}
+
+
 
 // DEPLOYMENT OF AZURE CUSTOMER ATTRIBUTION TAG
 resource customerAttribution 'Microsoft.Resources/deployments@2021-04-01' = if (cuaEnabled) {
@@ -760,3 +771,4 @@ output USE_AZURE_OPENAI_EMBEDDINGS bool = useAzureOpenAIEmbeddings
 output EMBEDDING_DEPLOYMENT_NAME string = useAzureOpenAIEmbeddings ? azureOpenAIEmbeddingDeploymentName : sentenceTransformersModelName
 output ENRICHMENT_APPSERVICE_NAME string = enrichmentApp.outputs.name 
 output DEPLOYMENT_KEYVAULT_NAME string = kvModule.outputs.keyVaultName
+output vnetId string = vnet.outputs.id
