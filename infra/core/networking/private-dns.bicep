@@ -9,13 +9,14 @@ resource privateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = {
   location: location
 }
 
-resource virtualNetworkLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = {
-  name: name2
-  location: location
-  properties: {
-    registrationEnabled: false 
-    virtualNetwork: {
-      id: vnetId
-    }
-  }
-}
+/* resource virtualNetworkLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = {
+//#  name: name2
+//  location: location
+//  properties: {
+//    registrationEnabled: false 
+//    virtualNetwork: {
+//      id: vnetId
+//    }
+//  }
+//}
+*/
