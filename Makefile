@@ -24,8 +24,8 @@ build-containers: extract-env
 infrastructure: check-subscription ## Deploy infrastructure
 	@./scripts/inf-create.sh
 
-extract-env: extract-env-debug-webapp extract-env-debug-functions ## Extract infrastructure.env file from BICEP output
-	 @./scripts/json-to-env.sh < infra_output.json > ./scripts/environments/infrastructure.env
+extract-env: extract-env-debug-webapp extract-env-debug-functions ## Extract infrastructure.env file from Terraform output
+	 @./scripts/json-to-env.sh < inf_output.json > ./scripts/environments/infrastructure.env
 
 deploy-webapp: extract-env ## Deploys the web app code to Azure App Service
 	@./scripts/deploy-webapp.sh
@@ -39,11 +39,11 @@ deploy-enrichments: extract-env ## Deploys the web app code to Azure App Service
 deploy-search-indexes: extract-env ## Deploy search indexes
 	@./scripts/deploy-search-indexes.sh
 
-extract-env-debug-webapp: ## Extract infrastructure.debug.env file from BICEP output
-	@./scripts/json-to-env.webapp.debug.sh < infra_output.json > ./scripts/environments/infrastructure.debug.env
+extract-env-debug-webapp: ## Extract infrastructure.debug.env file from Terraform output
+	@./scripts/json-to-env.webapp.debug.sh < inf_output.json > ./scripts/environments/infrastructure.debug.env
 
-extract-env-debug-functions: ## Extract local.settings.json to debug functions from BICEP output
-	@./scripts/json-to-env.function.debug.sh < infra_output.json > ./functions/local.settings.json
+extract-env-debug-functions: ## Extract local.settings.json to debug functions from Terraform output
+	@./scripts/json-to-env.function.debug.sh < inf_output.json > ./functions/local.settings.json
 
 # Utils (used by other Makefile rules)
 check-subscription:
@@ -53,8 +53,16 @@ check-subscription:
 take-dir-ownership:
 	@sudo chown -R vscode .
 
+terraform-remote-backend:
+	@./scripts/terraform-remote-backend.sh
+
+infrastructure-remote-backend: terraform-remote-backend infrastructure
+
 destroy-inf: check-subscription
 	@./scripts/inf-destroy.sh
 
 functional-tests: extract-env ## Run functional tests to check the processing pipeline is working
 	@./scripts/functional-tests.sh	
+
+run-migration: ## Migrate from BICEP to Terraform
+	python ./scripts/merge-databases.py
