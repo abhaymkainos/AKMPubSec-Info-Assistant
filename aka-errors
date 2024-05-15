@@ -1,0 +1,49 @@
+ Error: creating Account (Subscription: "b365bddc-76cd-451a-8269-580ef3914dd9"
+│ Resource Group Name: "infoasst-akmmayy"
+│ Account Name: "infoasst-fr-ywuno"): Put "https://management.azure.com/subscriptions/b365bddc-76cd-451a-8269-580ef3914dd9/resourceGroups/infoasst-akmmayy/providers/Microsoft.CognitiveServices/accounts/infoasst-fr-ywuno?api-version=2023-05-01": HTTP response was nil; connection may have been reset
+│ 
+│   with module.formrecognizer.azurerm_cognitive_account.formRecognizerAccount,
+│   on core/ai/docintelligence/formrecognizer.tf line 1, in resource "azurerm_cognitive_account" "formRecognizerAccount":
+│    1: resource "azurerm_cognitive_account" "formRecognizerAccount" {
+│ 
+╵
+╷
+│ Error: creating Deployment (Subscription: "b365bddc-76cd-451a-8269-580ef3914dd9"
+│ Resource Group Name: "infoasst-akmmayy"
+│ Account Name: "infoasst-aoai-ywuno"
+│ Deployment Name: "text-embedding-ada-002"): performing CreateOrUpdate: unexpected status 400 with error: InsufficientQuota: This operation require 240 new capacity in quota Tokens Per Minute (thousands) - Text-Embedding-Ada-002, which is bigger than the current available capacity 110. The current quota usage is 240 and the quota limit is 350 for quota Tokens Per Minute (thousands) - Text-Embedding-Ada-002.
+│ 
+│   with module.openaiServices.azurerm_cognitive_deployment.deployment[1],
+│   on core/ai/openaiservices/openaiservices.tf line 12, in resource "azurerm_cognitive_deployment" "deployment":
+│   12: resource "azurerm_cognitive_deployment" "deployment" {
+│ 
+│ creating Deployment (Subscription: "b365bddc-76cd-451a-8269-580ef3914dd9"
+│ Resource Group Name: "infoasst-akmmayy"
+│ Account Name: "infoasst-aoai-ywuno"
+│ Deployment Name: "text-embedding-ada-002"): performing CreateOrUpdate: unexpected status 400 with error: InsufficientQuota:
+│ This operation require 240 new capacity in quota Tokens Per Minute (thousands) - Text-Embedding-Ada-002, which is bigger than
+│ the current available capacity 110. The current quota usage is 240 and the quota limit is 350 for quota Tokens Per Minute
+│ (thousands) - Text-Embedding-Ada-002.
+╵
+╷
+│ Error: creating Deployment (Subscription: "b365bddc-76cd-451a-8269-580ef3914dd9"
+│ Resource Group Name: "infoasst-akmmayy"
+│ Account Name: "infoasst-aoai-ywuno"
+│ Deployment Name: "gpt-35-turbo-16k"): performing CreateOrUpdate: unexpected status 400 with error: InsufficientQuota: This operation require 240 new capacity in quota Tokens Per Minute (thousands) - GPT-35-Turbo, which is bigger than the current available capacity 60. The current quota usage is 240 and the quota limit is 300 for quota Tokens Per Minute (thousands) - GPT-35-Turbo.
+│ 
+│   with module.openaiServices.azurerm_cognitive_deployment.deployment[0],
+│   on core/ai/openaiservices/openaiservices.tf line 12, in resource "azurerm_cognitive_deployment" "deployment":
+│   12: resource "azurerm_cognitive_deployment" "deployment" {
+│ 
+│ creating Deployment (Subscription: "b365bddc-76cd-451a-8269-580ef3914dd9"
+│ Resource Group Name: "infoasst-akmmayy"
+│ Account Name: "infoasst-aoai-ywuno"
+│ Deployment Name: "gpt-35-turbo-16k"): performing CreateOrUpdate: unexpected status 400 with error: InsufficientQuota: This
+│ operation require 240 new capacity in quota Tokens Per Minute (thousands) - GPT-35-Turbo, which is bigger than the current
+│ available capacity 60. The current quota usage is 240 and the quota limit is 300 for quota Tokens Per Minute (thousands) -
+│ GPT-35-Turbo.
+╵
+make: *** [Makefile:25: infrastructure] Error 1
+
+
+===============
